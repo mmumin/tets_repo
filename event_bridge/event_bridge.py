@@ -9,5 +9,5 @@ class AWSEventBidge():
         print("creating event")
 
 def call_event_bridge(decorable_fun):
-    print("creating event bridge event")
+    print("creating aws event")
     return decorable_fun
