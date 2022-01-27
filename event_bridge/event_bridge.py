@@ -10,5 +10,5 @@ class AWSEventBidge():
 
 def call_event_bridge(decorable_fun):
     print("creating aws event")
-    print("Adding a new event eve1")
+    print("Adding a new event eve2")
     return decorable_fun
