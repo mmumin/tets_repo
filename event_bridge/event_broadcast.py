@@ -7,16 +7,14 @@ import boto3
 from django.conf import settings
 from django.db import connections
 
-from erp_user.models import *
-
-SITE = os.environ.get("SITE", "localhost")
-
 
 def trigger_event(module_name):
     def Inner(func):
         # @wraps(func)
         def wrapper(self, request, *args, **kwargs):
             try:
+                from erp_user.models import ErpSystemConfig
+                SITE = os.environ.get("SITE", "localhost")
                 start_time = datetime.now()
                 result = func(self, request, *args, **kwargs)
                 if ErpSystemConfig.objects.get(config_key='CAPTURE_EVENTS', is_delete=False).config_value[0] == 'False':
